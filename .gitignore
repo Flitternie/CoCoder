@@ -1,4 +1,5 @@
 # custom
+sync_from_upstream.sh
 results/
 local
 ProjectGen/
@@ -9,6 +10,7 @@ workspaces/
 .agents/
 .claude
 .benchmarks
+dashboard
 
 # OS
 .DS_Store

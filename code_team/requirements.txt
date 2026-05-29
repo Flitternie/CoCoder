@@ -1,0 +1,21 @@
+# Core framework
+openhands-sdk==1.11.4
+openhands-tools==1.11.4
+
+# Agent tools & utilities
+pydantic>=2.0
+python-dotenv>=1.0
+filelock>=3.19
+deepdiff>=8.0
+json_repair>=0.44
+rank-bm25>=0.2.2
+
+# Testing
+pytest>=8.0
+
+pytest-timeout
+pytest-json-report
+pytest-cov
+
+# Observability (optional)
+# lmnr

@@ -41,11 +41,11 @@ The following projects have non-code data files in their source directories that
 | **DB/Hybrid_Images** | `resources/` (images) | — | ✅ | non-.py auto-copy + required_files |
 | **DB/readtime** | `samples/` (html) | — | ✅ | non-.py auto-copy + required_files |
 
-> **CPE** = CodeProjectEval, **DB** = DevBench
+> **CPE** = CodeProjectEval, **DB** = DevEval
 
 ### Projects with No Data Dependencies (No Extra Handling Needed)
 
-DevBench: TextCNN, particle-swarm-optimization
+DevEval: TextCNN, particle-swarm-optimization
 
 CodeProjectEval: bplustree, csvs-to-sqlite, deprecated, flask, imapclient, parsel, portalocker, pyjwt, python-hl7, rsa, simpy, tinydb, voluptuous
 
@@ -53,7 +53,7 @@ CodeProjectEval: bplustree, csvs-to-sqlite, deprecated, flask, imapclient, parse
 
 ## Per-Project Extra Handling Details
 
-### DevBench/lice: Remove `--cov-fail-under=100`
+### DevEval/lice: Remove `--cov-fail-under=100`
 
 - **Action**: Removed the flag from test commands in `config.json` (`unit/check/acceptance` scripts all adjusted).
 - **Reason**: The original reference implementation only achieves ~`80.59%` coverage, making `100%` unreachable. This causes all-tests-pass runs to still be marked as failures.
@@ -72,7 +72,7 @@ CodeProjectEval: bplustree, csvs-to-sqlite, deprecated, flask, imapclient, parse
 - **Action 2**: `requirements.txt` — `pytest==3.5.0` → `pytest`, removed the version pin.
 - **Impact**: Test pass/fail results were always correct; only the coverage report was broken. `pytest==3.5.0` is incompatible with the current environment; removing the pin lets it use the already-installed pytest.
 
-### DevBench/ArXiv_digest: Add `requests` to `requirements.txt`
+### DevEval/ArXiv_digest: Add `requests` to `requirements.txt`
 
 - **Action**: Appended `requests` to `docs/requirements.txt`.
 - **Reason**: The baseline `query_arxiv.py` uses `urllib.request`, so `requests` was not listed in the original requirements. However, Agents frequently generate code that uses the `requests` library instead. Without `requests` installed, all unit tests fail at collection time with `ModuleNotFoundError: No module named 'requests'` (symptom: `collected 0 items / 6 errors`).

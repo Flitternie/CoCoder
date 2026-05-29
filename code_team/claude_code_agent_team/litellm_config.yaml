@@ -1,0 +1,17 @@
+# LiteLLM Proxy Config
+# Start with: source start_proxy.sh
+# All values read from environment variables (loaded from .env by start_proxy.sh)
+
+model_list:
+  - model_name: os.environ/LLM_MODEL
+    litellm_params:
+      model: os.environ/LLM_MODEL
+      api_key: os.environ/LLM_API_KEY
+      api_base: os.environ/LLM_BASE_URL
+      extra_headers:
+        x-portkey-provider: os.environ/PORTKEY_PROVIDER
+
+litellm_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY
+  drop_params: true
+  include_usage: true
