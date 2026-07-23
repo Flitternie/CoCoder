@@ -1,44 +1,8 @@
 # When Parallelism Pays Off: Cohesion-Aware Task Partitioning for Multi-Agent Coding
 
-<p align="center">
-  <img src="docs/assets/cocoderv2.png" width="80%" alt="Co-Coder">
-</p>
-
-<p align="center">
-  <a href="https://arxiv.org/abs/2606.00953">
-    <img src="https://img.shields.io/badge/Paper-1F6FEB?style=for-the-badge&logo=arxiv&logoColor=white" alt="Paper">
-  </a>
-  <a href="#benchmarks">
-    <img src="https://img.shields.io/badge/%F0%9F%93%8A%20Benchmarks-EA580C?style=for-the-badge" alt="Benchmarks">
-  </a>
-  <a href="#quick-start">
-    <img src="https://img.shields.io/badge/%F0%9F%9A%80%20Quick%20Start-0A7A5E?style=for-the-badge" alt="Quick Start">
-  </a>
-</p>
-
-<p align="center">
-  <b>Xu Yang</b><sup>*1</sup>&nbsp;&nbsp;
-  <b>Lunyiu Nie</b><sup>*1</sup>&nbsp;&nbsp;
-  <b>Ethan Chandra</b><sup>1</sup>&nbsp;&nbsp;
-  <b>Stanislav Gannutin</b><sup>1</sup>&nbsp;&nbsp;
-  <b>Fangru Lin</b><sup>2</sup>&nbsp;&nbsp;
-  <b>Swarat Chaudhuri</b><sup>1</sup>
-</p>
-<p align="center">
-  <sup>1</sup>The University of Texas at Austin&nbsp;&nbsp;
-  <sup>2</sup>University of Oxford
-</p>
-<p align="center">
-  <sup>*</sup>Equal Contribution
-</p>
-
 Multi-agent LLM systems offer a way to decompose complex tasks such as coding through parallelization and context isolation. However, adding agents in practice introduces inter-agent communication overhead, which incurs extra cost and can sometimes offset the efficiency gains.
 
 **Cohesion-aware Coder (Co-Coder)** formalizes multi-agent orchestration as a graph partitioning problem that captures the *communication-to-computation trade-off*. It builds dependency graphs from static analysis, isolates structural hub files, partitions the graph via community detection, and executes the partition with a dependency-aware scheduler.
-
-<p align="center">
-  <img src="docs/assets/cocoder-steps.png" width="90%" alt="Co-Coder Pipeline">
-</p>
 
 ## Key Results
 
@@ -212,21 +176,6 @@ CoCoder/
     CodeProjectEval/   # CodeProjectEval benchmark tasks
     depanalysis/       # Pre-computed RIB ground truths
 ```
-
-## Citing Us
-
-```bibtex
-@misc{yang2026parallelismpaysoffcohesionaware,
-      title={When Parallelism Pays Off: Cohesion-Aware Task Partitioning for Multi-Agent Coding}, 
-      author={Xu Yang and Lunyiu Nie and Ethan Chandra and Stanislav Gannutin and Fangru Lin and Swarat Chaudhuri},
-      year={2026},
-      eprint={2606.00953},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG},
-      url={https://arxiv.org/abs/2606.00953}, 
-}
-```
-
 ## License
 
 This project is licensed under the Apache License 2.0. See [LICENSE](LICENSE) for details.
