@@ -14,7 +14,7 @@ def role_grouping(rib, weights, algo_fn, threshold=0.4, **algo_kwargs):
     """Role Detection + algorithm on core files + reassemble non-init files."""
     roles = detect_roles(rib, threshold=threshold)
     in_hubs = sorted(f for f, r in roles.items() if r == "in_hub")
-    out_in_hubs = sorted(f for f, r in roles.items() if r == "out_hub")
+    out_hubs = sorted(f for f, r in roles.items() if r == "out_hub")
     cores = sorted(f for f, r in roles.items() if r == "core")
     core_set = set(cores)
     core_w = {k: v for k, v in weights.items() if k[0] in core_set and k[1] in core_set}
