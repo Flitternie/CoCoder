@@ -5,6 +5,9 @@
 </p>
 
 <p align="center">
+  <a href="https://neurips.cc/virtual/2026/poster/148594">
+    <img src="https://img.shields.io/badge/NeurIPS-2026-8B5CF6?style=for-the-badge" alt="NeurIPS 2026">
+  </a>
   <a href="https://arxiv.org/abs/2606.00953">
     <img src="https://img.shields.io/badge/Paper-1F6FEB?style=for-the-badge&logo=arxiv&logoColor=white" alt="Paper">
   </a>
@@ -32,9 +35,9 @@
   <sup>*</sup>Equal Contribution
 </p>
 
-Multi-agent LLM systems offer a way to decompose complex tasks such as coding through parallelization and context isolation. However, adding agents in practice introduces inter-agent communication overhead, which incurs extra cost and can sometimes offset the efficiency gains.
+This repository contains the official implementation of **Cohesion-aware Coder (Co-Coder)**, from our NeurIPS 2026 paper *When Parallelism Pays Off: Cohesion-Aware Task Partitioning for Multi-Agent Coding*.
 
-**Cohesion-aware Coder (Co-Coder)** formalizes multi-agent orchestration as a graph partitioning problem that captures the *communication-to-computation trade-off*. It builds dependency graphs from static analysis, isolates structural hub files, partitions the graph via community detection, and executes the partition with a dependency-aware scheduler.
+LLM-based multi-agent systems decompose complex tasks such as coding through parallelization and context isolation, yet inter-agent communication overhead can offset the efficiency gains. Co-Coder formalizes multi-agent orchestration as a graph partitioning problem that captures the *communication-to-computation trade-off*. It builds dependency graphs from code architecture design, isolates structural hub files, partitions the graph via community detection, and executes the partition with a dependency-aware scheduler.
 
 <p align="center">
   <img src="docs/assets/cocoder-steps.png" width="90%" alt="Co-Coder Pipeline">
@@ -42,15 +45,18 @@ Multi-agent LLM systems offer a way to decompose complex tasks such as coding th
 
 ## Key Results
 
-Across 28 real-world projects on DevEval and CodeProjectEval, Co-Coder advances the Pareto frontier over sequential and file-based parallel baselines as well as Claude Code with Agent Teams.
+Across 28 real-world projects on DevEval and CodeProjectEval and two base models (GPT-5 Mini and Claude Sonnet 4.6), Co-Coder advances the Pareto frontier over sequential and file-based parallel baselines as well as Claude Code with Agent Teams.
 
-|  | DevEval (10 projects) | CodeProjectEval (18 projects) |
-|--|----------------------|-------------------------------|
-| **Pass rate** | 56.8% &rarr; 68.1% (+11.3%) | 20.1% &rarr; 34.1% (+14.0%) |
-| **Wall-clock speedup** | 1.81x | 2.10x |
-| **API cost reduction** | 28% | 35% |
+Compared with the sequential baseline:
 
-The largest gains appear on the most dependency-dense projects. All experiments use `gpt-5-mini` as the base model, evaluated over three independent runs.
+| Base model | Benchmark | Pass rate | Wall-clock speedup | API cost reduction |
+|------------|-----------|-----------|--------------------|--------------------|
+| GPT-5 Mini | DevEval (10 projects) | 56.8% &rarr; 68.1% | 1.81x | 28% |
+| GPT-5 Mini | CodeProjectEval (18 projects) | 20.1% &rarr; 34.1% | 2.10x | 35% |
+| Claude Sonnet 4.6 | DevEval (10 projects) | 67.4% &rarr; 73.3% | 1.83x | 13% |
+| Claude Sonnet 4.6 | CodeProjectEval (18 projects) | 34.0% &rarr; 39.4% | 3.13x | 42% |
+
+Against Claude Code with Agent Teams, Co-Coder raises pass rate by 9.8% to 17.8% while running up to 1.41x faster at up to 22% lower cost. The largest gains appear on the most dependency-dense projects. All results are averaged over three independent runs.
 
 ## Table of Contents
 
@@ -210,20 +216,17 @@ CoCoder/
   datasets/
     DevEval/          # DevEval benchmark tasks
     CodeProjectEval/   # CodeProjectEval benchmark tasks
-    depanalysis/       # Pre-computed RIB ground truths
 ```
 
 ## Citing Us
 
 ```bibtex
-@misc{yang2026parallelismpaysoffcohesionaware,
-      title={When Parallelism Pays Off: Cohesion-Aware Task Partitioning for Multi-Agent Coding}, 
+@inproceedings{yang2026parallelismpaysoffcohesionaware,
+      title={When Parallelism Pays Off: Cohesion-Aware Task Partitioning for Multi-Agent Coding},
       author={Xu Yang and Lunyiu Nie and Ethan Chandra and Stanislav Gannutin and Fangru Lin and Swarat Chaudhuri},
+      booktitle={Advances in Neural Information Processing Systems},
       year={2026},
-      eprint={2606.00953},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG},
-      url={https://arxiv.org/abs/2606.00953}, 
+      url={https://openreview.net/forum?id=wYda526jWp},
 }
 ```
 
