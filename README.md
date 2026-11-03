@@ -73,7 +73,7 @@ The largest gains appear on the most dependency-dense projects. All experiments 
 ### Install
 
 ```bash
-git clone https://github.com/CoCoder-Agent/CoCoder.git && cd CoCoder
+git clone https://github.com/Flitternie/CoCoder.git && cd CoCoder
 
 conda create -n cocoder python=3.12 -y
 conda activate cocoder
