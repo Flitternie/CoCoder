@@ -1,4 +1,4 @@
-# When Parallelism Pays Off: Cohesion-Aware Task Partitioning for Multi-Agent Coding
+# When Parallelism Pays Off: Cohesion-Aware Task Partitioning for Multi-Agent Coding (NeurIPS 2026)
 
 <p align="center">
   <img src="docs/assets/cocoderv2.png" width="80%" alt="Co-Coder">
@@ -35,9 +35,7 @@
   <sup>*</sup>Equal Contribution
 </p>
 
-This repository contains the official implementation of **Cohesion-aware Coder (Co-Coder)**, from our NeurIPS 2026 paper *When Parallelism Pays Off: Cohesion-Aware Task Partitioning for Multi-Agent Coding*.
-
-LLM-based multi-agent systems decompose complex tasks such as coding through parallelization and context isolation, yet inter-agent communication overhead can offset the efficiency gains. Co-Coder formalizes multi-agent orchestration as a graph partitioning problem that captures the *communication-to-computation trade-off*. It builds dependency graphs from code architecture design, isolates structural hub files, partitions the graph via community detection, and executes the partition with a dependency-aware scheduler.
+LLM-based multi-agent systems decompose complex tasks such as coding through parallelization and context isolation, yet inter-agent communication overhead can offset the efficiency gains. **Cohesion-aware Coder (Co-Coder)** formalizes multi-agent orchestration as a graph partitioning problem that captures the *communication-to-computation trade-off*. It builds dependency graphs from code architecture design, isolates structural hub files, partitions the graph via community detection, and executes the partition with a dependency-aware scheduler.
 
 <p align="center">
   <img src="docs/assets/cocoder-steps.png" width="90%" alt="Co-Coder Pipeline">
