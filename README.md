@@ -160,7 +160,7 @@ The partitioning runs in three steps:
 
 Each partition group is assigned to one coding agent. Files are managed through a **shared task list**: each file advances from *pending* to *ready* once its upstream dependencies complete, then gets picked up by its group's agent. No global synchronization barriers.
 
-After all files are generated, a leader agent runs the test suite and dispatches repair requests partition-by-partition.
+After all files are generated, a leader agent runs the test suite, reads the failure report, and repairs the responsible files directly.
 
 ## Pipelines
 
